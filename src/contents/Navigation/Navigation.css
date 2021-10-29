@@ -16,3 +16,6 @@
     height: 30px;
     border-radius: 50%;
 }
+nav-container a{
+    color: white;
+}
