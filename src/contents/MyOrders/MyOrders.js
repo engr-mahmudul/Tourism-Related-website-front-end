@@ -9,7 +9,7 @@ const MyOrders = () => {
     const email = user.email;
     // console.log(email);
     useEffect(() => {
-        fetch(`http://localhost:5000/userOrders/${email}`)
+        fetch(`https://enigmatic-ridge-45134.herokuapp.com/userOrders/${email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, []);
@@ -17,7 +17,7 @@ const MyOrders = () => {
     const deleteHandle = id => {
         const procced = window.confirm("Are you sure to remove this service?");
         if (procced) {
-            const url = `http://localhost:5000/userOrders/${id}`;
+            const url = `https://enigmatic-ridge-45134.herokuapp.com/userOrders/${id}`;
             fetch(url, {
                 method: "DELETE"
             })
