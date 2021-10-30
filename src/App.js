@@ -11,6 +11,7 @@ import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './contents/PrivateRoute/PrivateRoute';
 import HomeServices from './contents/HomeServices/HomeServices';
 import Booking from './contents/Booking/Booking';
+import MyOrders from './contents/MyOrders/MyOrders';
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path='/addService'>
               <AddNewService></AddNewService>
+            </PrivateRoute>
+            <PrivateRoute path='/myOrders'>
+              <MyOrders></MyOrders>
             </PrivateRoute>
             <PrivateRoute exact path='/service/:bookingId'>
               <Booking></Booking>

@@ -37,7 +37,7 @@ const Navigation = () => {
                         {user?.email ?
                             <Nav className='ml-4'>
 
-                                <Nav.Link as={HashLink} to="/manageOrders" >My Orders</Nav.Link> <span> <Button onClick={logOut} className='mr-2' style={{ border: 'none', outline: 'none', fontSize: 'larger', backgroundColor: '#1b92aa' }}> {userIcon} </Button> <span style={{ color: 'yellow', fontWeight: '700' }}>{user.displayName}</span></span>
+                                <Nav.Link as={HashLink} to="/myOrders" >My Orders</Nav.Link> <span> <Button onClick={logOut} className='mr-2' style={{ border: 'none', outline: 'none', fontSize: 'larger', backgroundColor: '#1b92aa' }}> {userIcon} </Button> <span style={{ color: 'yellow', fontWeight: '700' }}>{user.displayName}</span></span>
                             </Nav> :
                             <Nav.Link as={HashLink} to="/login">Log in</Nav.Link>}
 

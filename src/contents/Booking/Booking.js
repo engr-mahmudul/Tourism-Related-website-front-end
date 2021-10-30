@@ -29,7 +29,7 @@ const Booking = () => {
             .then(res => res.json())
             .then(result => {
                 if (result.insertedId) {
-                    alert('Order processed Successfully');
+                    alert('Bookked Successfully');
 
                     reset();
                 }
