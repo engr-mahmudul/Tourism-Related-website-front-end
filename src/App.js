@@ -8,6 +8,9 @@ import PageNotFound from './contents/PageNotFound/PageNotFound';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './contents/Navigation/Navigation';
 import AuthProvider from './context/AuthProvider';
+import PrivateRoute from './contents/PrivateRoute/PrivateRoute';
+import HomeServices from './contents/HomeServices/HomeServices';
+import Booking from './contents/Booking/Booking';
 
 function App() {
   return (
@@ -25,12 +28,15 @@ function App() {
             <Route path='/login'>
               <Login></Login>
             </Route>
-            <Route path='/manageOrders'>
+            <PrivateRoute path='/manageOrders'>
               <ManageOrders></ManageOrders>
-            </Route>
-            <Route path='/addService'>
+            </PrivateRoute>
+            <PrivateRoute path='/addService'>
               <AddNewService></AddNewService>
-            </Route>
+            </PrivateRoute>
+            <PrivateRoute exact path='/service/:bookingId'>
+              <Booking></Booking>
+            </PrivateRoute>
             <Route path='*'>
               <PageNotFound></PageNotFound>
 
