@@ -18,6 +18,7 @@ const Booking = () => {
     }, [])
     const onSubmit = data => {
         data.order = service;
+        data.status = "pending"
         console.log(data);
         fetch('https://enigmatic-ridge-45134.herokuapp.com/orders', {
             method: 'POST',

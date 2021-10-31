@@ -4,11 +4,50 @@ import './ManageOrders.css'
 
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
+    const [changed, setChanged] = useState(false);
     useEffect(() => {
         fetch('https://enigmatic-ridge-45134.herokuapp.com/orders/allUsers')
             .then(res => res.json())
             .then(data => setOrders(data))
-    }, [])
+    }, [changed]);
+    const updateStatus = (id) => {
+        const url = `https://enigmatic-ridge-45134.herokuapp.com/userOrders/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({})
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    alert("Order has been Confirmed");
+                    setChanged(true);
+
+                }
+            })
+
+    }
+    const deleteHandle = id => {
+        const procced = window.confirm("Are you sure to remove this service?");
+        if (procced) {
+            const url = `https://enigmatic-ridge-45134.herokuapp.com/userOrders/${id}`;
+            fetch(url, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount) {
+                        alert('Deleted Successfully');
+                        const remaining = orders.filter(order => order._id !== id);
+                        setOrders(remaining);
+                    }
+                })
+
+        }
+
+    }
     return (
         <div className='order-mangement'>
             <h2 className='fw-bolder text-center text-success py-4'> All User's Order Mangement </h2>
@@ -20,11 +59,21 @@ const ManageOrders = () => {
                         <img src={item?.order?.img} alt="" width='50' height='50' />
 
                     </Col>
-                    <Col lg={3} sm={12} xs={12}> <h6 className='text-center'>{item?.order?.name}</h6></Col>
-                    <Col lg={3} sm={12} xs={12}> <h6 className='text-center'>{item?.name}</h6></Col>
-                    <Col lg={2} sm={12} xs={12}>  <p className='text-center'>Pending</p></Col>
-                    <Col lg={2} sm={12} xs={12} className='text-center'>
-                        <button type="button" className="btn btn-sm btn-outline-success">Confirm</button>
+                    <Col lg={3} sm={12} xs={12}> <h6 className='text-center'>Package: <span className='fw-bolder'>{item?.order?.name}</span></h6></Col>
+                    <Col lg={3} sm={12} xs={12}> <h6 className='text-center '>Ordered by: <span style={{ color: '#8C39B3' }}>{item?.name}</span></h6></Col>
+                    <Col lg={1} sm={12} xs={12}>  <p className='text-center fw-bolder border border-success p-1'>{item.status}</p></Col>
+                    <Col lg={3} sm={12} xs={12} className='text-center'>
+                        {
+                            item?.status == 'pending' &&
+                            <button type="button" className="btn btn-sm btn-success mx-1"
+                                onClick={() => updateStatus(item._id)}
+                            >Confirm</button>
+
+                        }
+                        <button type="button" className="btn btn-sm btn-danger mx-1"
+                            onClick={() => deleteHandle(item._id)}
+                        >Remove</button>
+
                     </Col>
 
 
