@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import useAuth from '../../hooks/useAuth';
 import MyOrder from '../MyOrder/MyOrder';
+import './Myorder.css'
 
 const MyOrders = () => {
     const [orders, setOrders] = useState([]);
@@ -34,11 +35,11 @@ const MyOrders = () => {
 
     }
     return (
-        <div>
-            <h2 className='text-center border-bottom border-2 mt-4 pb-4 fw-bolder text-success mx-2' >My Booked Servies</h2>
+        <div className='myOrder-div'>
+            <h2 className='text-center border-bottom border-2 mt-4 pb-4 fw-bolder text-success mx-2 pt-4' >My All Booked Servies Are:</h2>
             {
                 orders.map(item =>
-                    <Row className='my-2 pb-2 border-bottom border-2 mx-2'>
+                    <Row className='my-2 pb-2 border-bottom border-2 mx-2' key={item._id}>
                         <Col lg={3} sm={4} xs={4} className='column-style'>
                             <img src={item?.order?.img} alt="" width='80' height='80' style={{ borderRadius: "10px" }} />
 
