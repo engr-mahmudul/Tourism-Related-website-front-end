@@ -12,6 +12,7 @@ import PrivateRoute from './contents/PrivateRoute/PrivateRoute';
 import HomeServices from './contents/HomeServices/HomeServices';
 import Booking from './contents/Booking/Booking';
 import MyOrders from './contents/MyOrders/MyOrders';
+import Footer from './contents/Footer/Footer';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
 
             </Route>
           </Switch>
+          <Footer></Footer>
         </BrowserRouter>
       </AuthProvider>
 

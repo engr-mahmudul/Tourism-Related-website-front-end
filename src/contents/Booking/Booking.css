@@ -19,10 +19,10 @@
 }
 
 .shipping-form{
-    margin:30px 150px;
+  
     
 }
-.shipping-form input {
+.shipping-form input,textarea {
     display: block;
     margin-top: 30px;
     padding: 5px;

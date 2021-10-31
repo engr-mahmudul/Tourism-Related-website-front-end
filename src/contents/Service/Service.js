@@ -22,7 +22,7 @@ const Service = (props) => {
                 </div>
                 <div className="button-class">
                     <Link to={`/service/${_id}`}>
-                        <Button variant='success' className='px-3 single-button mt-3'>Book {name.toLowerCase()}</Button>
+                        <Button style={{ backgroundColor: '#8264e6' }} className='px-3 single-button mt-3'>Book {name.toLowerCase()}</Button>
                     </Link>
                 </div>
             </div>

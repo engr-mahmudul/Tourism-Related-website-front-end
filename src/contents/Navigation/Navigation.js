@@ -28,16 +28,16 @@ const Navigation = () => {
                     <Navbar.Collapse className="justify-content-end">
 
 
-                        <Nav.Link as={HashLink} to="/home" >Home</Nav.Link>
-                        <Nav.Link as={HashLink} to="/home#services">Services</Nav.Link>
-                        <Nav.Link as={HashLink} to="/manageOrders" >Manage Orders</Nav.Link>
-                        <Nav.Link as={HashLink} to="/addService" >Add Service</Nav.Link>
+                        <Nav.Link as={HashLink} to="/home" className='text-white' >Home</Nav.Link>
+                        <Nav.Link as={HashLink} to="/home#services" className='text-white' >Services</Nav.Link>
+                        <Nav.Link as={HashLink} to="/manageOrders" className='text-white' >Manage Orders</Nav.Link>
+                        <Nav.Link as={HashLink} to="/addService" className='text-white' >Add Service</Nav.Link>
                         {/* <Nav.Link as={HashLink} to="" >My Orders</Nav.Link> */}
 
                         {user?.email ?
                             <Nav className='ml-4'>
 
-                                <Nav.Link as={HashLink} to="/myOrders" >My Orders</Nav.Link> <span> <Button onClick={logOut} className='mr-2' style={{ border: 'none', outline: 'none', fontSize: 'larger', backgroundColor: '#1b92aa' }}> {userIcon} </Button> <span style={{ color: 'yellow', fontWeight: '700' }}>{user.displayName}</span></span>
+                                <Nav.Link as={HashLink} to="/myOrders" className='text-white' >My Orders</Nav.Link> <span> <Button onClick={logOut} className='mr-2' style={{ border: 'none', outline: 'none', fontSize: 'larger', backgroundColor: '#8264e6' }}> {userIcon} </Button> <span style={{ color: 'yellow', fontWeight: '700' }}>{user.displayName}</span></span>
                             </Nav> :
                             <Nav.Link as={HashLink} to="/login">Log in</Nav.Link>}
 

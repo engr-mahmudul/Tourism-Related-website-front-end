@@ -57,7 +57,7 @@ const Booking = () => {
                     <h3 style={{ fontWeight: "800", padding: '10px', textAlign: "center" }}>Provide Your Info For Shipping</h3>
                 </Col>
                 <Col lg={12} sm={12} xs={12} className='shipping-form-container'>
-                    <div>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
                         <form className="shipping-form" onSubmit={handleSubmit(onSubmit)}>
 
                             <input defaultValue={user.displayName} {...register("name")} />
@@ -74,7 +74,7 @@ const Booking = () => {
                 </Col>
 
                 <div className='details'>
-                    <Link to='/'><button className='btn px-5 mt-3 btn-warning '>Or Go Back Home</button></Link>
+                    <Link to='/'><button className='btn px-5 mt-3 btn-warning '>Go Back Home ?</button></Link>
                 </div>
             </Row>
 
