@@ -39,7 +39,7 @@ const Navigation = () => {
 
                                 <Nav.Link as={HashLink} to="/myOrders" className='text-white' >My Orders</Nav.Link> <span> <Button onClick={logOut} className='mr-2' style={{ border: 'none', outline: 'none', fontSize: 'larger', backgroundColor: '#8264e6' }}> {userIcon} </Button> <span style={{ color: 'yellow', fontWeight: '700' }}>{user.displayName}</span></span>
                             </Nav> :
-                            <Nav.Link as={HashLink} to="/login">Log in</Nav.Link>}
+                            <Nav.Link as={HashLink} to="/login" className='text-white' >Log in</Nav.Link>}
 
 
                     </Navbar.Collapse>

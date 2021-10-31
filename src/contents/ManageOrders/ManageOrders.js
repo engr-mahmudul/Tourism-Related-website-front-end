@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Spinner } from 'react-bootstrap';
 import './ManageOrders.css'
 
 const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
     const [changed, setChanged] = useState(false);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         fetch('https://enigmatic-ridge-45134.herokuapp.com/orders/allUsers')
             .then(res => res.json())
-            .then(data => setOrders(data))
+            .then(data => {
+                setOrders(data);
+                setLoading(false);
+            })
     }, [changed]);
     const updateStatus = (id) => {
         const url = `https://enigmatic-ridge-45134.herokuapp.com/userOrders/${id}`;
@@ -47,6 +51,11 @@ const ManageOrders = () => {
 
         }
 
+    }
+    if (loading) {
+        return <div >
+            <Spinner style={{ margin: "100px 50%" }} animation="border" variant="danger" />
+        </div>
     }
     return (
         <div className='order-mangement'>

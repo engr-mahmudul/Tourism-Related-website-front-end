@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Spinner } from 'react-bootstrap';
 import useAuth from '../../hooks/useAuth';
 import MyOrder from '../MyOrder/MyOrder';
 import './Myorder.css'
@@ -7,12 +7,16 @@ import './Myorder.css'
 const MyOrders = () => {
     const [orders, setOrders] = useState([]);
     const { user } = useAuth();
+    const [loading, setLoading] = useState(true);
     const email = user.email;
     // console.log(email);
     useEffect(() => {
         fetch(`https://enigmatic-ridge-45134.herokuapp.com/userOrders/${email}`)
             .then(res => res.json())
-            .then(data => setOrders(data))
+            .then(data => {
+                setOrders(data);
+                setLoading(false);
+            })
     }, []);
     // Item delete
     const deleteHandle = id => {
@@ -33,6 +37,11 @@ const MyOrders = () => {
 
         }
 
+    }
+    if (loading) {
+        return <div >
+            <Spinner style={{ margin: "100px 50%" }} animation="border" variant="danger" />
+        </div>
     }
     return (
         <div className='myOrder-div'>
